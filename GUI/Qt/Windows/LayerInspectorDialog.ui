@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LayerInspectorDialog</class>
+ <widget class="QDialog" name="LayerInspectorDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>537</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Image Layer Inspector - ITK-SNAP</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>12</number>
+   </property>
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>6</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>180</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton {
+	width: 16px;
+	height: 16px;
+	icon-size: 16px;
+	padding: 1px;
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0,0,0">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="loToolbar">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+       </layout>
+      </item>
+      <item>
+       <widget class="QScrollArea" name="saLayers">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="saLayersContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>168</width>
+           <height>409</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#saLayersContents {
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	border-bottom: 1px solid grey;
+}</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QDialogButtonBox" name="buttonBox">
+        <property name="standardButtons">
+         <set>QDialogButtonBox::Close</set>
+        </property>
+        <property name="centerButtons">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget_2" native="true">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>1</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="GeneralLayerInspector" name="cmpComponent">
+      <attribute name="title">
+       <string>General</string>
+      </attribute>
+      <attribute name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Select which channels to show for multi-channel images (images with multiple components per voxel)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </attribute>
+     </widget>
+     <widget class="ContrastInspector" name="cmpContrast">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Contrast</string>
+      </attribute>
+     </widget>
+     <widget class="ColorMapInspector" name="cmpColorMap">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <attribute name="title">
+       <string>Color Map</string>
+      </attribute>
+     </widget>
+     <widget class="ImageInfoInspector" name="cmpInfo">
+      <attribute name="title">
+       <string>Info</string>
+      </attribute>
+     </widget>
+     <widget class="MetadataInspector" name="cmpMetadata">
+      <attribute name="title">
+       <string>Metadata</string>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionSaveSelectedLayerAs">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/save_22.png</normaloff>:/root/save_22.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionLayoutToggle">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/layout_tile_16.png</normaloff>:/root/layout_tile_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>Layout Toggle</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Toggle between thumbnail and tiled layouts.&lt;/p&gt;&lt;p&gt;In &lt;span style=&quot; font-weight:600;&quot;&gt;thumbnail&lt;/span&gt; layout, one image layer occupies most of the available screen space, and other loaded image layers are shown as thumbnails. In &lt;span style=&quot; font-weight:600;&quot;&gt;tiled&lt;/span&gt; layout, multiple image layers are shown side by side. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionOpenLayer">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/open_22.png</normaloff>:/root/open_22.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open Layer</string>
+   </property>
+   <property name="toolTip">
+    <string>Open an additional image layer</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+G</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ContrastInspector</class>
+   <extends>QWidget</extends>
+   <header>ContrastInspector.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ColorMapInspector</class>
+   <extends>QWidget</extends>
+   <header>ColorMapInspector.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ImageInfoInspector</class>
+   <extends>QWidget</extends>
+   <header>ImageInfoInspector.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MetadataInspector</class>
+   <extends>QWidget</extends>
+   <header location="global">MetadataInspector.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>GeneralLayerInspector</class>
+   <extends>QWidget</extends>
+   <header>GeneralLayerInspector.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../Resources/SNAPResources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

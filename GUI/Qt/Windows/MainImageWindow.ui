@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainImageWindow</class>
+ <widget class="QMainWindow" name="MainImageWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>907</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+font-size:13px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QStackedWidget" name="stackMain">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="pageMain">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>4</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>4</number>
+        </property>
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="SliceViewPanel" name="panel0" native="true"/>
+        </item>
+        <item row="0" column="1">
+         <widget class="SliceViewPanel" name="panel1" native="true"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="ViewPanel3D" name="panel3D" native="true">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="SliceViewPanel" name="panel2" native="true"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageSplash">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTabWidget" name="tabSplash">
+          <property name="styleSheet">
+           <string notr="true">QTabWidget::pane {
+	margin-top: 0px;
+	border:none;
+}
+
+QTabWidget::tab-bar {
+	border-top: 1px solid black;
+	left:20px;
+}
+
+QTabBar:tab {
+	border:none;
+	margin-left: 20px;
+	margin-top: 6px;
+	padding-left: 5px;
+	padding-right: 5px;
+	min-width: 132px;
+	color: rgb(102, 102, 102);
+}
+
+QTabBar:tab:selected {
+	font-weight:bold;
+	text-decoration: underline;
+}
+
+QTabBar:tab:hover {
+	text-decoration: underline;
+}</string>
+          </property>
+          <property name="tabPosition">
+           <enum>QTabWidget::North</enum>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tabGettingStarted">
+           <attribute name="title">
+            <string>Getting Started</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <property name="leftMargin">
+             <number>12</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>12</number>
+            </property>
+            <property name="bottomMargin">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frame">
+              <property name="styleSheet">
+               <string notr="true">QFrame#frame {
+	background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0.537, y2:0.0340909, stop:0 rgba(210, 230, 230, 255), stop:1 rgba(255, 255, 255, 255));
+    border: 1px solid black;
+}
+
+QTextBrowser {
+	background-color: rgba(1,1,1,0);
+    border: none;
+}
+	
+
+</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_3">
+               <item row="2" column="0" colspan="2">
+                <widget class="QTextBrowser" name="brsGettingStarted">
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">padding: -16px;</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                 <property name="lineWidth">
+                  <number>0</number>
+                 </property>
+                 <property name="html">
+                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13px; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Lucida Grande'; font-size:13pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; font-family:'Lucida Grande'; font-size:13pt;&quot; style=&quot; margin-top:12px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11px;&quot;&gt;Learn about the &lt;/span&gt;&lt;a href=&quot;http://www.itksnap.org/pmwiki/pmwiki.php?n=Documentation.NewFeaturesVersion30&quot;&gt;&lt;span style=&quot; font-size:11px; text-decoration: underline; color:#0000ff;&quot;&gt;new features&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:11px;&quot;&gt; in this version&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:'Lucida Grande'; font-size:13pt;&quot; style=&quot; margin-top:0px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11px;&quot;&gt;Read a &lt;/span&gt;&lt;a href=&quot;http://www.itksnap.org/pmwiki/pmwiki.php?n=Documentation.UpgradingTo30&quot;&gt;&lt;span style=&quot; font-size:11px; text-decoration: underline; color:#0000ff;&quot;&gt;quick transition guide&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:11px;&quot;&gt; for Version 2 users&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:'Lucida Grande'; font-size:13pt;&quot; style=&quot; margin-top:0px; margin-bottom:4px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11px;&quot;&gt;Download &lt;/span&gt;&lt;a href=&quot;http://www.itksnap.org/pmwiki/pmwiki.php?n=Downloads.Data&quot;&gt;&lt;span style=&quot; font-size:11px; text-decoration: underline; color:#0000ff;&quot;&gt;sample datasets&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li style=&quot; font-family:'Lucida Grande'; font-size:13pt;&quot; style=&quot; margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11px;&quot;&gt;Connect to the &lt;/span&gt;&lt;a href=&quot;http://www.itksnap.org/pmwiki/pmwiki.php?n=MailingLists.MailingLists&quot;&gt;&lt;span style=&quot; font-size:11px; text-decoration: underline; color:#0000ff;&quot;&gt;ITK-SNAP community&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="openExternalLinks">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" colspan="2">
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" alignment="Qt::AlignBottom">
+                <widget class="QLabel" name="label_2">
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">font-size:16px;
+font-weight:bold;
+color:rgb(103, 103, 103);
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Getting started with ITK-SNAP Version 3</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1" alignment="Qt::AlignRight">
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap resource="../Resources/SNAPResources.qrc">:/root/logo_square_shadow.png</pixmap>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabRecent">
+           <attribute name="title">
+            <string>Recent Images</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="leftMargin">
+             <number>12</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>12</number>
+            </property>
+            <property name="bottomMargin">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="RecentHistoryItemsView" name="panelRecentImages" native="true"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tabRecentWorkspaces">
+           <attribute name="title">
+            <string>Recent Workspaces</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <property name="spacing">
+             <number>4</number>
+            </property>
+            <property name="leftMargin">
+             <number>12</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>12</number>
+            </property>
+            <property name="bottomMargin">
+             <number>4</number>
+            </property>
+            <item>
+             <widget class="RecentHistoryItemsView" name="panelRecentWorkspaces" native="true"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="topMargin">
+            <number>4</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLoadMain">
+             <property name="text">
+              <string>Open Image ...</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLoadWorkspace">
+             <property name="text">
+              <string>Open Workspace ...</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>907</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuRecent_Images">
+     <property name="title">
+      <string>Recent Main Images</string>
+     </property>
+     <addaction name="actionRecent_1"/>
+     <addaction name="actionRecent_2"/>
+     <addaction name="actionRecent_3"/>
+     <addaction name="actionRecent_4"/>
+     <addaction name="actionRecent_5"/>
+    </widget>
+    <widget class="QMenu" name="menuRecent_Overlays">
+     <property name="title">
+      <string>Recent Added Images</string>
+     </property>
+     <addaction name="actionRecentOverlay_1"/>
+     <addaction name="actionRecentOverlay_2"/>
+     <addaction name="actionRecentOverlay_3"/>
+     <addaction name="actionRecentOverlay_4"/>
+     <addaction name="actionRecentOverlay_5"/>
+    </widget>
+    <widget class="QMenu" name="menuSave_Image">
+     <property name="title">
+      <string>Save Image</string>
+     </property>
+     <addaction name="actionSaveMain"/>
+     <addaction name="separator"/>
+     <addaction name="actionSaveSpeed"/>
+     <addaction name="actionSaveLevelSet"/>
+     <addaction name="actionSaveMainROI"/>
+    </widget>
+    <widget class="QMenu" name="menuExport">
+     <property name="title">
+      <string>Export</string>
+     </property>
+     <widget class="QMenu" name="menuImage_Slice">
+      <property name="title">
+       <string>Image Slice</string>
+      </property>
+      <addaction name="actionExportAxial"/>
+      <addaction name="actionExportCoronal"/>
+      <addaction name="actionExportSagittal"/>
+     </widget>
+     <widget class="QMenu" name="menuScreenshot">
+      <property name="title">
+       <string>Screenshot</string>
+      </property>
+      <addaction name="actionSSAxial"/>
+      <addaction name="actionSSCoronal"/>
+      <addaction name="actionSSSagittal"/>
+     </widget>
+     <widget class="QMenu" name="menuScreenshot_Series">
+      <property name="title">
+       <string>Screenshot Series</string>
+      </property>
+      <addaction name="actionSSSeriesAxial"/>
+      <addaction name="actionSSSeriesCoronal"/>
+      <addaction name="actionSSSeriesSagittal"/>
+     </widget>
+     <addaction name="menuImage_Slice"/>
+     <addaction name="menuScreenshot"/>
+     <addaction name="menuScreenshot_Series"/>
+    </widget>
+    <widget class="QMenu" name="menuAddAnotherDicomImage">
+     <property name="title">
+      <string>Add Another DICOM Series</string>
+     </property>
+     <addaction name="actionDicomDummy"/>
+    </widget>
+    <addaction name="actionOpenMain"/>
+    <addaction name="menuRecent_Images"/>
+    <addaction name="separator"/>
+    <addaction name="menuAddAnotherDicomImage"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_Overlay"/>
+    <addaction name="menuRecent_Overlays"/>
+    <addaction name="separator"/>
+    <addaction name="menuSave_Image"/>
+    <addaction name="separator"/>
+    <addaction name="actionSavePolygons"/>
+    <addaction name="actionOpenPolygons"/>
+    <addaction name="separator"/>
+    <addaction name="menuExport"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose_Window"/>
+    <addaction name="actionUnload_Last_Overlay"/>
+    <addaction name="actionUnload_All"/>
+    <addaction name="separator"/>
+    <addaction name="actionNew_ITK_SNAP_Window"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuSegmentation">
+    <property name="title">
+     <string>Segmentation</string>
+    </property>
+    <widget class="QMenu" name="menuAppearance">
+     <property name="title">
+      <string>Appearance</string>
+     </property>
+     <addaction name="actionSegmentationToggle"/>
+     <addaction name="separator"/>
+     <addaction name="actionSegmentationIncreaseOpacity"/>
+     <addaction name="actionSegmentationDecreaseOpacity"/>
+    </widget>
+    <widget class="QMenu" name="menuRecent_Segmentations">
+     <property name="title">
+      <string>Recent Segmentations</string>
+     </property>
+     <addaction name="actionRecentSeg_1"/>
+     <addaction name="actionRecentSeg_2"/>
+     <addaction name="actionRecentSeg_3"/>
+     <addaction name="actionRecentSeg_4"/>
+     <addaction name="actionRecentSeg_5"/>
+    </widget>
+    <widget class="QMenu" name="menuAddSegmentation">
+     <property name="title">
+      <string>Add Another Segmentation</string>
+     </property>
+     <widget class="QMenu" name="menuAddSegmentation_Recent">
+      <property name="title">
+       <string>Recent</string>
+      </property>
+      <addaction name="actionRecentAddSeg_1"/>
+      <addaction name="actionRecentAddSeg_2"/>
+      <addaction name="actionRecentAddSeg_3"/>
+      <addaction name="actionRecentAddSeg_4"/>
+      <addaction name="actionRecentAddSeg_5"/>
+     </widget>
+     <addaction name="actionAddSegmentation_New"/>
+     <addaction name="separator"/>
+     <addaction name="actionAddSegmentation_Open"/>
+     <addaction name="menuAddSegmentation_Recent"/>
+    </widget>
+    <addaction name="actionLoad_from_Image"/>
+    <addaction name="menuRecent_Segmentations"/>
+    <addaction name="separator"/>
+    <addaction name="menuAddSegmentation"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveSegmentation"/>
+    <addaction name="actionSaveSegmentationAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionClear"/>
+    <addaction name="actionClearActive"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_as_Mesh"/>
+    <addaction name="separator"/>
+    <addaction name="actionLoadLabels"/>
+    <addaction name="actionSaveLabels"/>
+    <addaction name="separator"/>
+    <addaction name="actionLabel_Editor"/>
+    <addaction name="separator"/>
+    <addaction name="actionVolumesAndStatistics"/>
+    <addaction name="separator"/>
+    <addaction name="menuAppearance"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <widget class="QMenu" name="menuActive_Main_Tool">
+     <property name="title">
+      <string>Active Main Tool</string>
+     </property>
+     <addaction name="actionCrosshair"/>
+     <addaction name="actionZoomPan"/>
+     <addaction name="actionPolygon"/>
+     <addaction name="actionPaintbrush"/>
+     <addaction name="actionSnake"/>
+     <addaction name="actionAnnotation"/>
+    </widget>
+    <widget class="QMenu" name="menuActive_3D_Tool">
+     <property name="title">
+      <string>Active 3D Tool</string>
+     </property>
+     <addaction name="action3DTrackball"/>
+     <addaction name="action3DCrosshair"/>
+     <addaction name="action3DScalpel"/>
+     <addaction name="action3DSpray"/>
+    </widget>
+    <widget class="QMenu" name="menuContrast">
+     <property name="title">
+      <string>Image Contrast</string>
+     </property>
+     <addaction name="actionImage_Contrast"/>
+     <addaction name="separator"/>
+     <addaction name="actionAutoContrastGlobal"/>
+     <addaction name="actionResetContrastGlobal"/>
+    </widget>
+    <addaction name="separator"/>
+    <addaction name="actionLayerInspector"/>
+    <addaction name="separator"/>
+    <addaction name="menuContrast"/>
+    <addaction name="actionColor_Map_Editor"/>
+    <addaction name="actionImage_Information"/>
+    <addaction name="separator"/>
+    <addaction name="menuActive_Main_Tool"/>
+    <addaction name="menuActive_3D_Tool"/>
+    <addaction name="separator"/>
+    <addaction name="actionReorient_Image"/>
+    <addaction name="actionRegistration"/>
+    <addaction name="separator"/>
+    <addaction name="actionDSS"/>
+    <addaction name="separator"/>
+    <addaction name="actionInterpolate_Labels"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuForeground_Label">
+     <property name="title">
+      <string>Foreground Label</string>
+     </property>
+     <addaction name="actionForegroundLabelPrev"/>
+     <addaction name="actionForegroundLabelNext"/>
+    </widget>
+    <widget class="QMenu" name="menuBackground_Label">
+     <property name="title">
+      <string>Background Label</string>
+     </property>
+     <addaction name="actionBackgroundLabelPrev"/>
+     <addaction name="actionBackgroundLabelNext"/>
+    </widget>
+    <widget class="QMenu" name="menuSlice_Annotations">
+     <property name="title">
+      <string>Slice Annotations</string>
+     </property>
+     <addaction name="actionToggle_All_Annotations"/>
+     <addaction name="actionToggle_Crosshair"/>
+     <addaction name="separator"/>
+     <addaction name="actionAnnotation_Preferences"/>
+    </widget>
+    <widget class="QMenu" name="menuZoom">
+     <property name="title">
+      <string>Zoom</string>
+     </property>
+     <addaction name="actionZoomToFitInAllViews"/>
+     <addaction name="separator"/>
+     <addaction name="actionZoom_to_100"/>
+     <addaction name="actionZoom_to_200"/>
+     <addaction name="actionZoom_to_400"/>
+     <addaction name="separator"/>
+     <addaction name="actionCenter_on_Cursor"/>
+    </widget>
+    <widget class="QMenu" name="menuLayers">
+     <property name="title">
+      <string>Layers</string>
+     </property>
+     <addaction name="actionToggleLayerLayout"/>
+     <addaction name="separator"/>
+     <addaction name="actionActivateNextLayer"/>
+     <addaction name="actionActivatePreviousLayer"/>
+     <addaction name="separator"/>
+     <addaction name="actionActivateNextSegmentationLayer"/>
+     <addaction name="actionActivatePreviousSegmentationLayer"/>
+     <addaction name="separator"/>
+     <addaction name="actionOverlayVisibilityToggleAll"/>
+     <addaction name="actionOverlayVisibilityIncreaseAll"/>
+     <addaction name="actionOverlayVisibilityDecreaseAll"/>
+    </widget>
+    <widget class="QMenu" name="menuViews">
+     <property name="title">
+      <string>Views</string>
+     </property>
+     <addaction name="actionMainControlPanel"/>
+     <addaction name="separator"/>
+     <addaction name="actionNext_Display_Layout"/>
+    </widget>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="menuForeground_Label"/>
+    <addaction name="menuBackground_Label"/>
+    <addaction name="separator"/>
+    <addaction name="menuZoom"/>
+    <addaction name="menuLayers"/>
+    <addaction name="menuSlice_Annotations"/>
+    <addaction name="separator"/>
+    <addaction name="menuViews"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="separator"/>
+    <addaction name="actionInstallCLI"/>
+    <addaction name="actionCheck_for_Updates"/>
+    <addaction name="separator"/>
+    <addaction name="actionDocumentation_Home"/>
+   </widget>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Workspace</string>
+    </property>
+    <widget class="QMenu" name="menuRecentWorkspaces">
+     <property name="title">
+      <string>Recent Workspaces</string>
+     </property>
+     <addaction name="actionRecentWorkspace1"/>
+     <addaction name="actionRecentWorkspace2"/>
+     <addaction name="actionRecentWorkspace3"/>
+     <addaction name="actionRecentWorkspace4"/>
+     <addaction name="actionRecentWorkspace5"/>
+    </widget>
+    <addaction name="actionOpenWorkspace"/>
+    <addaction name="menuRecentWorkspaces"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveWorkspace"/>
+    <addaction name="actionSaveWorkspaceAs"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuSegmentation"/>
+   <addaction name="menuProject"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionOpenMain">
+   <property name="text">
+    <string>Open Main Image ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Open the main anatomy image that you wish to display or segment</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionLoad_from_Image">
+   <property name="text">
+    <string>Open Segmentation ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Load the segmentation image from disk</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSaveMain">
+   <property name="text">
+    <string>Main Image ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Main Image</string>
+   </property>
+  </action>
+  <action name="actionSaveSpeed">
+   <property name="text">
+    <string>Speed Image ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the Speed Image in Active Contour Mode</string>
+   </property>
+  </action>
+  <action name="actionSaveLevelSet">
+   <property name="text">
+    <string>Level Set Image ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save level set image in active snake mode</string>
+   </property>
+  </action>
+  <action name="actionSaveMainROI">
+   <property name="text">
+    <string>Main Image (Region of Interest) ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the region of interest selected for active contour segmentation</string>
+   </property>
+  </action>
+  <action name="actionRecent_1">
+   <property name="text">
+    <string>Recent 1</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+1</string>
+   </property>
+  </action>
+  <action name="actionRecent_2">
+   <property name="text">
+    <string>Recent 2</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+2</string>
+   </property>
+  </action>
+  <action name="actionRecent_3">
+   <property name="text">
+    <string>Recent 3</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+3</string>
+   </property>
+  </action>
+  <action name="actionRecent_4">
+   <property name="text">
+    <string>Recent 4</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+4</string>
+   </property>
+  </action>
+  <action name="actionRecent_5">
+   <property name="text">
+    <string>Recent 5</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+5</string>
+   </property>
+  </action>
+  <action name="actionExportAxial">
+   <property name="text">
+    <string>Axial</string>
+   </property>
+   <property name="toolTip">
+    <string>Export axial image slice as an image</string>
+   </property>
+  </action>
+  <action name="actionExportCoronal">
+   <property name="text">
+    <string>Coronal</string>
+   </property>
+   <property name="toolTip">
+    <string>Export coronal image slice as an image</string>
+   </property>
+  </action>
+  <action name="actionExportSagittal">
+   <property name="text">
+    <string>Sagittal</string>
+   </property>
+   <property name="toolTip">
+    <string>Export sagittal image slice as an image</string>
+   </property>
+  </action>
+  <action name="actionUnload_All">
+   <property name="text">
+    <string>Close All Images</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+W</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Unload Segmentation</string>
+   </property>
+  </action>
+  <action name="actionAdd_Overlay">
+   <property name="text">
+    <string>Add Another Image ...</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Load an image to display alongside the main image. The dimensions of this image must match those of the main image. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+G</string>
+   </property>
+  </action>
+  <action name="actionImage_Contrast">
+   <property name="text">
+    <string>Contrast Adjustment...</string>
+   </property>
+   <property name="toolTip">
+    <string>Adjust image contrast</string>
+   </property>
+  </action>
+  <action name="actionLabel_Editor">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/icons8_palette_16.png</normaloff>:/root/icons8_palette_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>Label Editor ...</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Label Editor (⌘L)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Opens the label editor, where you can edit segmentation labels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionReorient_Image">
+   <property name="text">
+    <string>Reorient Image...</string>
+   </property>
+  </action>
+  <action name="actionZoomToFitInAllViews">
+   <property name="text">
+    <string>Zoom to Fit in All Views</string>
+   </property>
+   <property name="toolTip">
+    <string>Reset the zoom factor in all views to fit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="actionCenter_on_Cursor">
+   <property name="text">
+    <string>Center All Views on Cursor</string>
+   </property>
+   <property name="toolTip">
+    <string>Center each slice view on the cursor position</string>
+   </property>
+   <property name="shortcut">
+    <string>C</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/icons8_undo-48.png</normaloff>:/root/icons8_undo-48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Undo (⌘Z)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Undo the last modification to the segmentation image.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/icons8_redo-48.png</normaloff>:/root/icons8_redo-48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Redo (⇧⌘Z)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Redo the last modification to the segmentation image.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Z</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace_1">
+   <property name="text">
+    <string>Recent 1</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace_2">
+   <property name="text">
+    <string>Recent 2</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace_3">
+   <property name="text">
+    <string>Recent 3</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace_4">
+   <property name="text">
+    <string>Recent 4</string>
+   </property>
+  </action>
+  <action name="actionSSAxial">
+   <property name="text">
+    <string>Axial</string>
+   </property>
+   <property name="toolTip">
+    <string>Export a screenshot of the axial view as an image</string>
+   </property>
+  </action>
+  <action name="actionSSCoronal">
+   <property name="text">
+    <string>Coronal</string>
+   </property>
+   <property name="toolTip">
+    <string>Export a screenshot of the axial view as an image</string>
+   </property>
+  </action>
+  <action name="actionSSSagittal">
+   <property name="text">
+    <string>Sagittal</string>
+   </property>
+   <property name="toolTip">
+    <string>Export a screenshot of the axial view as an image</string>
+   </property>
+  </action>
+  <action name="actionSaveSegmentationAs">
+   <property name="text">
+    <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionSave_as_Mesh">
+   <property name="text">
+    <string>Export as Surface Mesh...</string>
+   </property>
+  </action>
+  <action name="actionLoadLabels">
+   <property name="text">
+    <string>Import Label Descriptions...</string>
+   </property>
+  </action>
+  <action name="actionSaveLabels">
+   <property name="text">
+    <string>Export Label Descriptions...</string>
+   </property>
+  </action>
+  <action name="actionVolumesAndStatistics">
+   <property name="text">
+    <string>Volumes and Statistics...</string>
+   </property>
+  </action>
+  <action name="actionSegmentationToggle">
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Toggle Visibility</string>
+   </property>
+   <property name="shortcut">
+    <string>S</string>
+   </property>
+  </action>
+  <action name="actionSegmentationIncreaseOpacity">
+   <property name="text">
+    <string>Increase Opacity</string>
+   </property>
+   <property name="shortcut">
+    <string>D</string>
+   </property>
+  </action>
+  <action name="actionSegmentationDecreaseOpacity">
+   <property name="text">
+    <string>Decrease Opacity</string>
+   </property>
+   <property name="shortcut">
+    <string>A</string>
+   </property>
+  </action>
+  <action name="actionColor_Map_Editor">
+   <property name="text">
+    <string>Color Map Editor...</string>
+   </property>
+  </action>
+  <action name="actionImage_Information">
+   <property name="text">
+    <string>Image Information...</string>
+   </property>
+  </action>
+  <action name="actionUnload_Last_Overlay">
+   <property name="text">
+    <string>Close Image XXX</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unload the last image layer&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionUnload_All_Overlays">
+   <property name="text">
+    <string>Unload all additional image layers</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove all overlays from the current workspace. Only the main image will remain open.</string>
+   </property>
+  </action>
+  <action name="actionLayerInspector">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/icons8_layers_16.png</normaloff>:/root/icons8_layers_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>Layer Inspector...</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Layer Inspector (⌘I)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Opens the layer inspector window, which lists loaded image layers and can be used used to adjust their display properties.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionCrosshair">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/crosshair.gif</normaloff>:/root/crosshair.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Crosshair Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>Crosshair Tool</string>
+   </property>
+   <property name="shortcut">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="actionZoomPan">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/zoom.gif</normaloff>:/root/zoom.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Zoom/Pan Mode</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Zoom/Pan Mode (2)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Use the mouse to zoom in and out of the image, and to pan around when the image is zoomed in. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to pan around the image&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_scrolling_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Scroll through image slices.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>2</string>
+   </property>
+  </action>
+  <action name="actionPolygon">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/poly.gif</normaloff>:/root/poly.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Polygon Drawing Mode</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Polygon Drawing Mode (3)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to perform manual segmentation by drawing and filling polygons in the three orthogonal image slices. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Add points to the polygon and edit completed polygon&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_scrolling_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Scroll through image slices.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>3</string>
+   </property>
+  </action>
+  <action name="actionPaintbrush">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/paintbrush.gif</normaloff>:/root/paintbrush.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Paintbrush Mode</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Paintbrush Mode (4)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to perform manual segmentation by drawing with a paintbrush-like tool. Different brush shapes are available, including an adaptive brush that adjusts itself to the image data. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Paint with foreground label&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Paint with background label&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_scrolling_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Scroll through image slices.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>4</string>
+   </property>
+  </action>
+  <action name="actionSnake">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/snake.gif</normaloff>:/root/snake.gif</iconset>
+   </property>
+   <property name="text">
+    <string>Active Contour Segmentation Mode</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Active Contour (aka &amp;quot;Snake&amp;quot;) Segmentation Mode (5)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to select the region of interest for semi-automatic active contour segmentation and start the semi-automatic segmentation wizard.&lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Adjust the boundaries of the region of interest&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out of the image&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_scrolling_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Scroll through image slices.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>5</string>
+   </property>
+  </action>
+  <action name="actionSaveSegmentation">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action3DTrackball">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/rotate3d.gif</normaloff>:/root/rotate3d.gif</iconset>
+   </property>
+   <property name="text">
+    <string>3D Trackball Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3D Trackball Mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to manipulate the viewpoint in the 3D window. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to rotate the camera&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;⇧&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to pan the camera.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="action3DCrosshair">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/crosshair3D.gif</normaloff>:/root/crosshair3D.gif</iconset>
+   </property>
+   <property name="text">
+    <string>3D Crosshair Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3D Crosshair Mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to place the linked 3D cursor on one of the surfaces rendered in the 3D window. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Click on a surface to place 3D cursor&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="action3DScalpel">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/scalpel.gif</normaloff>:/root/scalpel.gif</iconset>
+   </property>
+   <property name="text">
+    <string>3D Scalpel Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Scalpel Mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to relabel parts of the 3D scene with a cutplane. Voxels on one side of the cutplane will be assigned the current foreground label. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Click once to start cutplane drawing. Click again in a different location to finish. Then hold and drag cutplane 3D widget to rotate.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;/&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;/&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="action3DSpray">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/spray.gif</normaloff>:/root/spray.gif</iconset>
+   </property>
+   <property name="text">
+    <string>3D Spray Paint Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Spray Paint Mode&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to add voxels to the surfaces of existing segmentations. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Press and hold to apply spray paint. &lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;/&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;/&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
+  <action name="actionOverlayVisibilityToggleAll">
+   <property name="text">
+    <string>Toggle Overlay Visibility</string>
+   </property>
+   <property name="iconText">
+    <string>Toggle Visibility of Sticky Layers</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle Visibility (All)</string>
+   </property>
+   <property name="shortcut">
+    <string>W</string>
+   </property>
+  </action>
+  <action name="actionOverlayVisibilityIncreaseAll">
+   <property name="text">
+    <string>Increase Overlay Opacity</string>
+   </property>
+   <property name="shortcut">
+    <string>E</string>
+   </property>
+  </action>
+  <action name="actionOverlayVisibilityDecreaseAll">
+   <property name="text">
+    <string>Decrease Overlay Opacity</string>
+   </property>
+   <property name="shortcut">
+    <string>Q</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About ITK-SNAP</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Preferences ...</string>
+   </property>
+  </action>
+  <action name="actionSaveWorkspace">
+   <property name="text">
+    <string>Save Workspace ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the current workspace, including open image layers and associated settings and parameters</string>
+   </property>
+  </action>
+  <action name="actionOpenWorkspace">
+   <property name="text">
+    <string>Open Workspace ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Open a workspace containing multiple image layers and associated settings and parameters</string>
+   </property>
+  </action>
+  <action name="actionSaveWorkspaceAs">
+   <property name="text">
+    <string>Save Workspace As ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save the current workspace, including open image layers and associated settings and parameters</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace_5">
+   <property name="text">
+    <string>Recent 5</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace1">
+   <property name="text">
+    <string>Recent 1</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace2">
+   <property name="text">
+    <string>Recent 2</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace3">
+   <property name="text">
+    <string>Recent 3</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace4">
+   <property name="text">
+    <string>Recent 4</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspace5">
+   <property name="text">
+    <string>Recent 5</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open ...</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save ...</string>
+   </property>
+  </action>
+  <action name="actionReset">
+   <property name="text">
+    <string>Reset to Defaults</string>
+   </property>
+  </action>
+  <action name="actionSSSeriesAxial">
+   <property name="text">
+    <string>Axial</string>
+   </property>
+   <property name="toolTip">
+    <string>Iterate through all the slices in the axial view and save as a series of PNG image files.</string>
+   </property>
+  </action>
+  <action name="actionSSSeriesCoronal">
+   <property name="text">
+    <string>Coronal</string>
+   </property>
+   <property name="toolTip">
+    <string>Iterate through all the slices in the coronal view and save as a series of PNG image files.</string>
+   </property>
+  </action>
+  <action name="actionSSSeriesSagittal">
+   <property name="text">
+    <string>Sagittal</string>
+   </property>
+   <property name="toolTip">
+    <string>Iterate through all the slices in the sagittal view and save as a series of PNG image files.</string>
+   </property>
+  </action>
+  <action name="actionForegroundLabelPrev">
+   <property name="text">
+    <string>Previous</string>
+   </property>
+   <property name="shortcut">
+    <string>&lt;</string>
+   </property>
+  </action>
+  <action name="actionForegroundLabelNext">
+   <property name="text">
+    <string>Next</string>
+   </property>
+   <property name="shortcut">
+    <string>&gt;</string>
+   </property>
+  </action>
+  <action name="actionBackgroundLabelPrev">
+   <property name="text">
+    <string>Previous</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+,</string>
+   </property>
+  </action>
+  <action name="actionBackgroundLabelNext">
+   <property name="text">
+    <string>Next</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+.</string>
+   </property>
+  </action>
+  <action name="actionToggle_All_Annotations">
+   <property name="text">
+    <string>Toggle All Annotations</string>
+   </property>
+   <property name="shortcut">
+    <string>X</string>
+   </property>
+  </action>
+  <action name="actionToggle_Crosshair">
+   <property name="text">
+    <string>Toggle Crosshair</string>
+   </property>
+   <property name="shortcut">
+    <string>Shift+X</string>
+   </property>
+  </action>
+  <action name="actionAnnotation_Preferences">
+   <property name="text">
+    <string>Annotation Preferences...</string>
+   </property>
+  </action>
+  <action name="actionAutoContrastGlobal">
+   <property name="text">
+    <string>Auto-Adjust Contrast (all layers)</string>
+   </property>
+   <property name="toolTip">
+    <string>Automatically adjust contrast in the main image and all overlays</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+J</string>
+   </property>
+  </action>
+  <action name="actionResetContrastGlobal">
+   <property name="text">
+    <string>Reset Contrast (all layers)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+J</string>
+   </property>
+  </action>
+  <action name="actionHa">
+   <property name="text">
+    <string>Ha</string>
+   </property>
+  </action>
+  <action name="actionZoom_to_100">
+   <property name="text">
+    <string>Zoom to Actual Size x1</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F, 1</string>
+   </property>
+  </action>
+  <action name="actionZoom_to_200">
+   <property name="text">
+    <string>Zoom to Actual Size x2</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F, 2</string>
+   </property>
+  </action>
+  <action name="actionZoom_to_400">
+   <property name="text">
+    <string>Zoom to Actual Size x4</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+F, 4</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_Updates">
+   <property name="text">
+    <string>Check for Software Updates ...</string>
+   </property>
+  </action>
+  <action name="actionDocumentation_Home">
+   <property name="text">
+    <string>Documentation Home ...</string>
+   </property>
+  </action>
+  <action name="actionNew_ITK_SNAP_Window">
+   <property name="text">
+    <string>New ITK-SNAP Window</string>
+   </property>
+  </action>
+  <action name="actionCoregister_Overlay">
+   <property name="text">
+    <string>Coregister Overlay ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Co-register an image with the main image currently loaded into ITK-SNAP</string>
+   </property>
+  </action>
+  <action name="actionRecentOverlay_1">
+   <property name="text">
+    <string>Recent 1</string>
+   </property>
+  </action>
+  <action name="actionRecentOverlay_2">
+   <property name="text">
+    <string>Recent 2</string>
+   </property>
+  </action>
+  <action name="actionRecentOverlay_3">
+   <property name="text">
+    <string>Recent 3</string>
+   </property>
+  </action>
+  <action name="actionRecentOverlay_4">
+   <property name="text">
+    <string>Recent 4</string>
+   </property>
+  </action>
+  <action name="actionRecentOverlay_5">
+   <property name="text">
+    <string>Recent 5</string>
+   </property>
+  </action>
+  <action name="actionAnnotation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/annotation_28.png</normaloff>:/root/annotation_28.png</iconset>
+   </property>
+   <property name="text">
+    <string>Annotation Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Annotation Mode (6)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Used to draw annotations (lines, text) on image slices and to measure distance and angles between points in a slice. &lt;br/&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_left_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Use to draw and manipulate annotations&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_right_click_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Hold and drag to zoom in / zoom out.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;&lt;img src=&quot;:/root/icons8_mouse_scrolling_16.png&quot;/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td style=&quot; padding-left:5; padding-right:5; padding-top:0; padding-bottom:0;&quot;&gt;&lt;p&gt;Scroll through image slices.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>6</string>
+   </property>
+  </action>
+  <action name="actionToggleLayerLayout">
+   <property name="text">
+    <string>Thumbnail Layout</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Toggle between thumbnail and tiled layouts.&lt;/p&gt;&lt;p&gt;In &lt;span style=&quot; font-weight:600;&quot;&gt;thumbnail&lt;/span&gt; layout, one image layer occupies most of the available screen space, and other loaded image layers are shown as thumbnails. In &lt;span style=&quot; font-weight:600;&quot;&gt;tiled&lt;/span&gt; layout, multiple image layers are shown side by side. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="shortcut">
+    <string>\</string>
+   </property>
+  </action>
+  <action name="actionActivateNextLayer">
+   <property name="text">
+    <string>Activate Next Layer</string>
+   </property>
+   <property name="shortcut">
+    <string>]</string>
+   </property>
+  </action>
+  <action name="actionActivatePreviousLayer">
+   <property name="text">
+    <string>Activate Previous Layer</string>
+   </property>
+   <property name="shortcut">
+    <string>[</string>
+   </property>
+  </action>
+  <action name="actionInterpolate_Labels">
+   <property name="text">
+    <string>Interpolate Labels...</string>
+   </property>
+  </action>
+  <action name="actionRegistration">
+   <property name="text">
+    <string>Registration ...</string>
+   </property>
+   <property name="toolTip">
+    <string>Perform image registration</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionClose_Window">
+   <property name="text">
+    <string>Close Window</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionDicomDummy">
+   <property name="text">
+    <string>Dummy</string>
+   </property>
+  </action>
+  <action name="actionMainControlPanel">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Main Control Panel</string>
+   </property>
+  </action>
+  <action name="actionRecentSeg_1">
+   <property name="text">
+    <string>Recent1</string>
+   </property>
+  </action>
+  <action name="actionRecentSeg_2">
+   <property name="text">
+    <string>Recent2</string>
+   </property>
+  </action>
+  <action name="actionRecentSeg_3">
+   <property name="text">
+    <string>Recent3</string>
+   </property>
+  </action>
+  <action name="actionRecentSeg_4">
+   <property name="text">
+    <string>Recent4</string>
+   </property>
+  </action>
+  <action name="actionRecentSeg_5">
+   <property name="text">
+    <string>Recent5</string>
+   </property>
+  </action>
+  <action name="actionActivateNextSegmentationLayer">
+   <property name="text">
+    <string>Activate Next Segmentation Layer</string>
+   </property>
+   <property name="shortcut">
+    <string>}</string>
+   </property>
+  </action>
+  <action name="actionActivatePreviousSegmentationLayer">
+   <property name="text">
+    <string>Activate Previous Segmentation Layer</string>
+   </property>
+   <property name="shortcut">
+    <string>{</string>
+   </property>
+  </action>
+  <action name="actionAddSegmentation_Open">
+   <property name="text">
+    <string>Open...</string>
+   </property>
+   <property name="toolTip">
+    <string>Add existing segmentation image to the workspace</string>
+   </property>
+  </action>
+  <action name="actionAddSegmentation_New">
+   <property name="text">
+    <string>New</string>
+   </property>
+   <property name="toolTip">
+    <string>Add another blank segmentation to the current workspace</string>
+   </property>
+  </action>
+  <action name="actionRecentAddSeg_1">
+   <property name="text">
+    <string>Recent1</string>
+   </property>
+   <property name="toolTip">
+    <string>Recent1</string>
+   </property>
+  </action>
+  <action name="actionRecentAddSeg_2">
+   <property name="text">
+    <string>Recent2</string>
+   </property>
+  </action>
+  <action name="actionRecentAddSeg_3">
+   <property name="text">
+    <string>Recent3</string>
+   </property>
+  </action>
+  <action name="actionRecentAddSeg_4">
+   <property name="text">
+    <string>Recent4</string>
+   </property>
+  </action>
+  <action name="actionRecentAddSeg_5">
+   <property name="text">
+    <string>Recent5</string>
+   </property>
+  </action>
+  <action name="actionClearActive">
+   <property name="text">
+    <string>Unload Active Segmentation</string>
+   </property>
+   <property name="toolTip">
+    <string>Unload the segmentation that is currently being edited</string>
+   </property>
+  </action>
+  <action name="actionInstallCLI">
+   <property name="text">
+    <string>Install Command-Line Tools ...</string>
+   </property>
+  </action>
+  <action name="actionDSS">
+   <property name="text">
+    <string>Distributed Segmentation Service...</string>
+   </property>
+   <property name="toolTip">
+    <string>Send images to external server for automated segmentation</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionNext_Display_Layout">
+   <property name="text">
+    <string>Next Display Layout</string>
+   </property>
+   <property name="shortcut">
+    <string>|</string>
+   </property>
+  </action>
+  <action name="actionSavePolygons">
+   <property name="text">
+    <string>Save Polygons ...</string>
+   </property>
+  </action>
+  <action name="actionOpenPolygons">
+   <property name="text">
+    <string>Open Polygons</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Polygons</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SliceViewPanel</class>
+   <extends>QWidget</extends>
+   <header>SliceViewPanel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ViewPanel3D</class>
+   <extends>QWidget</extends>
+   <header>ViewPanel3D.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>RecentHistoryItemsView</class>
+   <extends>QWidget</extends>
+   <header location="global">RecentHistoryItemsView.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>brsGettingStarted</tabstop>
+  <tabstop>btnLoadMain</tabstop>
+  <tabstop>btnLoadWorkspace</tabstop>
+  <tabstop>tabSplash</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../Resources/SNAPResources.qrc"/>
+ </resources>
+ <connections/>
+ <designerdata>
+  <property name="gridDeltaX">
+   <number>10</number>
+  </property>
+  <property name="gridDeltaY">
+   <number>10</number>
+  </property>
+  <property name="gridSnapX">
+   <bool>true</bool>
+  </property>
+  <property name="gridSnapY">
+   <bool>true</bool>
+  </property>
+  <property name="gridVisible">
+   <bool>true</bool>
+  </property>
+ </designerdata>
+</ui>
