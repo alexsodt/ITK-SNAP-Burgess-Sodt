@@ -1,0 +1,60 @@
+/*=========================================================================
+
+  Program:   Insight Segmentation & Registration Toolkit
+  Module:    $RCSfile: SNAPCommon.cxx.in,v $
+  Language:  C++
+  Date:      $Date: 2009/02/03 20:28:14 $
+  Version:   $Revision: 1.4 $
+  Copyright (c) 2003 Insight Consortium. All rights reserved.
+  See ITKCopyright.txt or http://www.itk.org/HTML/Copyright.htm for details.
+
+     This software is distributed WITHOUT ANY WARRANTY; without even 
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+     PURPOSE.  See the above copyright notices for more information.
+=========================================================================*/
+#include "SNAPCommon.h"
+
+// Non-cvs version
+const char SNAPSoftVersion[] = "ITK-SNAP @SNAP_VERSION_FULL@";
+
+// Just the number part of the SNAP version
+unsigned int SNAPVersionMajor = @SNAP_VERSION_MAJOR@;
+unsigned int SNAPVersionMinor = @SNAP_VERSION_MINOR@;
+unsigned int SNAPVersionPatch = @SNAP_VERSION_PATCH@;
+const char SNAPVersionQualifier[] = "@SNAP_VERSION_QUALIFIER@";
+
+// Hardware architecture for this build
+const char SNAPArch[] = "@CPACK_SYSTEM_NAME@";
+
+// A string that appears in the user interface
+const char SNAPUISoftVersion[] = 
+  "Version @SNAP_VERSION_FULL@\n @SNAP_VERSION_RELEASE_DATE_FORMATTED@";
+
+// Release date of the current version
+const char SNAPCurrentVersionReleaseDate[] = "@SNAP_VERSION_RELEASE_DATE@";
+
+// String describing the current build environment
+const char SNAPBuildInfo[] =
+    "Build date        @SNAP_VERSION_COMPILE_DATE@\n"
+    "Git commit hash   @SNAP_VERSION_GIT_SHA1@\n"
+    "Git commit date   @SNAP_VERSION_GIT_TIMESTAMP@\n"
+    "Git branch        @SNAP_VERSION_GIT_BRANCH@\n"
+    "Build site name   @SITE@\n"
+    "Build OS          @CMAKE_HOST_SYSTEM@ @CMAKE_HOST_SYSTEM_PROCESSOR@\n"
+    "Build type        @CMAKE_BUILD_TYPE@\n"
+    "ITK version       @ITK_VERSION_MAJOR@.@ITK_VERSION_MINOR@.@ITK_VERSION_PATCH@\n"
+    "VTK version       @VTK_VERSION_MAJOR@.@VTK_VERSION_MINOR@.@VTK_VERSION_PATCH@\n"
+    "Qt version        @QTVERSION@\n"
+    "CMake version     @CMAKE_VERSION@\n"
+    "C compiler        @CMAKE_C_COMPILER_ID@ @CMAKE_C_COMPILER_VERSION@\n"
+    "C++ compiler      @CMAKE_CXX_COMPILER_ID@ @CMAKE_CXX_COMPILER_VERSION@\n";
+
+// Release date of the latest version whose user preference files are
+// incompatible with the current version and will be erased
+const char SNAPLastIncompatibleReleaseDate[] = "@SNAP_VERSION_LAST_COMPATIBLE_RELEASE_DATE@";
+
+// Build date - shown to help debugging nightly builds
+const char SNAPBuildDate[] = "@SNAP_VERSION_COMPILE_DATE@";
+
+// GIT signature
+const char SNAPGitSignature[] = "@SNAP_VERSION_GIT_SHA1@";
