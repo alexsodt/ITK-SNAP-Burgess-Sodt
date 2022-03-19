@@ -1963,6 +1963,8 @@ void MainImageWindow::on_actionSavePolygons_triggered()
 	QTextStream out(&file);
 	out.setCodec("UTF-8");
 
+	out << "Version0.01" << endl; 
+
   	for( int p = 0; p < 3; p++ )
 	{
 /*		SliceViewPanel *thePanel = GetSlicePanel(p);
