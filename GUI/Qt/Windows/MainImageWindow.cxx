@@ -87,7 +87,6 @@
 #include <QMimeData>
 #include <QDesktopWidget>
 #include <QShortcut>
-
 #include <QTextStream>
 
 #include "PolygonDrawingModel.h"
@@ -1609,6 +1608,12 @@ void MainImageWindow::on_actionOpenPolygons_triggered()
 
 	QTextStream in(&file);
 	in.setCodec("UTF-8");
+	
+	QString version;
+
+	in >> version;
+	
+	cout << "Read file version " << version.toUtf8().constData() << endl; 
 
   	for( int p = 0; p < 3; p++ )
 	{
