@@ -90,6 +90,7 @@
 #include <QTextStream>
 
 #include "PolygonDrawingModel.h"
+#include "tinyxml.h"
 
 QString read_tooltip_qt(const QString &filename)
 {
@@ -1593,19 +1594,59 @@ void MainImageWindow::on_actionOpenPolygons_triggered()
 
 
   // code snippets from doc.qt.io
-  QString fileName = QFileDialog::getOpenFileName( this, tr("Open polygons"), "", tr("Polygons (*.ply);;All Files (*)"));
+  QString fileName = QFileDialog::getOpenFileName( this, tr("Open polygons"), "", tr("Polygons (*.xml);;All Files (*)"));
 
   if( fileName.isEmpty() )
 	return;
   else
   {
-	QFile file(fileName);
-	if( !file.open(QIODevice::ReadOnly)) {
-		QMessageBox::information(this, tr("Unable to open file"),
-			file.errorString() );
-		return;
-	}
+//	QFile file(fileName);
 
+	string fileNameS(fileName.toStdString());
+
+	int len = strlen(fileNameS.c_str());
+	char fileNameC[1+len];
+	strcpy( fileNameC, fileNameS.c_str() );
+
+	TiXmlDocument openFile(fileNameC);
+	bool loadOkay = openFile.LoadFile();
+
+	if( !loadOkay )
+	{	
+		std::cout << openFile.ErrorDesc() << endl;	
+
+		QMessageBox::information(this, tr("Unable to open file"),
+			"Unknown error" );
+	
+	}
+	else
+	{
+		TiXmlHandle hOpenFile(&openFile);
+		TiXmlHandle hRoot(0);
+	
+		TiXmlElement *polygonsElem  = hOpenFile.FirstChild("polygons").Element();
+
+//		pElem = hOpenFile.FirstChildElement().Element();
+
+		std::cout << polygonsElem->Value() << endl;
+
+		TiXmlElement *pElem = polygonsElem->FirstChild("view")->ToElement();
+
+		if( pElem )
+		{	
+			int p = 0;
+
+			for( pElem; pElem && p < 3; pElem = pElem->NextSiblingElement("view"), p++ )
+			{
+				PolygonDrawingModel *pm = m_Model->GetPolygonDrawingModel(p);
+	
+				if( pm ) pm->ReadPolygonsFromBuffer(pElem);
+			}
+		}
+	}
+	
+
+/*
 	QTextStream in(&file);
 	in.setCodec("UTF-8");
 	
@@ -1621,7 +1662,10 @@ void MainImageWindow::on_actionOpenPolygons_triggered()
 
 		if( pm ) pm->ReadPolygonsFromBuffer(in);
 	}
+
+*/
  }
+
 }
 
 
@@ -1952,12 +1996,21 @@ void MainImageWindow::on_actionSavePolygons_triggered()
 
 
   // code snippets from doc.qt.io
-  QString fileName = QFileDialog::getSaveFileName( this, tr("Save polygons"), "", tr("Polygons (*.ply);;All Files (*)"));
+  QString fileName = QFileDialog::getSaveFileName( this, tr("Save polygons"), "", tr("Polygons (*.xml);;All Files (*)"));
 
   if( fileName.isEmpty() )
 	return;
   else
   {
+	TiXmlDocument saveFile;
+	TiXmlDeclaration *decl = new TiXmlDeclaration( "1.0", "", "" );
+
+	TiXmlElement *root = new TiXmlElement( "polygons" );
+	saveFile.LinkEndChild(root);	
+
+	root->SetAttribute("version", 1 );
+
+/*
 	QFile file(fileName);
 	if( !file.open(QIODevice::WriteOnly)) {
 		QMessageBox::information(this, tr("Unable to open file"),
@@ -1965,11 +2018,13 @@ void MainImageWindow::on_actionSavePolygons_triggered()
 		return;
 	}
 
+	
+
 	QTextStream out(&file);
 	out.setCodec("UTF-8");
 
 	out << "Version0.01" << endl; 
-
+*/
   	for( int p = 0; p < 3; p++ )
 	{
 /*		SliceViewPanel *thePanel = GetSlicePanel(p);
@@ -1982,8 +2037,12 @@ void MainImageWindow::on_actionSavePolygons_triggered()
 */
 		PolygonDrawingModel *pm = m_Model->GetPolygonDrawingModel(p);
 
-		if( pm ) pm->WritePolygonsToBuffer(out);
+		if( pm ) pm->WritePolygonsToBuffer(root);
 	}
+
+	string fileNameS(fileName.toStdString());
+	const char *fileNameC = fileNameS.c_str();	
+	saveFile.SaveFile( fileNameC );
  }
 }
 

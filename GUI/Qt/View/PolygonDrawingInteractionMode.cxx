@@ -129,6 +129,11 @@ void PolygonDrawingInteractionMode::onPastePolygon()
   m_Model->PastePolygon();
 }
 
+void PolygonDrawingInteractionMode::onCopyPolygon()
+{
+  m_Model->CopyPolygon();
+}
+
 
 void PolygonDrawingInteractionMode::onAcceptPolygon()
 {

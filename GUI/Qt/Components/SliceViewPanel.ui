@@ -132,7 +132,7 @@ font-size:11px;
         </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignHCenter">
+      <item>
        <widget class="QScrollBar" name="inSlicePosition">
         <property name="enabled">
          <bool>true</bool>
@@ -233,15 +233,6 @@ font-size:11px;
          <item>
           <widget class="QWidget" name="pagePolygonDraw" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout">
-            <property name="spacing">
-             <number>4</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
             <item>
              <spacer name="horizontalSpacer_2">
               <property name="orientation">
@@ -254,6 +245,36 @@ font-size:11px;
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QToolButton" name="btnCopyIncomplete">
+              <property name="minimumSize">
+               <size>
+                <width>64</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>-1</pointsize>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="text">
+               <string>copy</string>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextOnly</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QToolButton" name="btnCloseLoop">
@@ -353,15 +374,6 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QWidget" name="pagePolygonEdit" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <property name="spacing">
-             <number>4</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
             <item>
              <spacer name="horizontalSpacer_3">
               <property name="orientation">
@@ -374,6 +386,36 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QToolButton" name="btnCopyPolygon">
+              <property name="minimumSize">
+               <size>
+                <width>64</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>-1</pointsize>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="text">
+               <string>copy</string>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextOnly</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QToolButton" name="btnAcceptPolygon">
@@ -982,7 +1024,6 @@ p, li { white-space: pre-wrap; }
     <string>Esc</string>
    </property>
   </action>
-  
   <action name="actionToggle">
    <property name="icon">
     <iconset resource="../Resources/SNAPResources.qrc">
@@ -1001,7 +1042,6 @@ p, li { white-space: pre-wrap; }
     <string>$</string>
    </property>
   </action>
-  
   <action name="actionDeleteSelected">
    <property name="icon">
     <iconset resource="../Resources/SNAPResources.qrc">
@@ -1221,6 +1261,42 @@ p, li { white-space: pre-wrap; }
     <string>Change selected annotation properties</string>
    </property>
   </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/popup_paste_16.png</normaloff>:/root/popup_paste_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>copy</string>
+   </property>
+   <property name="iconText">
+    <string>copy</string>
+   </property>
+   <property name="toolTip">
+    <string>Copies the current polygon, which you can then paste.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionCopyIncomplete">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/popup_paste_16.png</normaloff>:/root/popup_paste_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>copy</string>
+   </property>
+   <property name="iconText">
+    <string>copy</string>
+   </property>
+   <property name="toolTip">
+    <string>Copies the current polygon, which you can then paste.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -1256,6 +1332,7 @@ p, li { white-space: pre-wrap; }
     <slot>onUndoLastPoint()</slot>
     <slot>onCancelDrawing()</slot>
     <slot>onCloseLoopAndAccept()</slot>
+    <slot>onCopyPolygon()</slot>
    </slots>
   </customwidget>
   <customwidget>
@@ -1298,8 +1375,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>440</x>
-     <y>168</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1314,8 +1391,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>466</x>
-     <y>195</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1330,8 +1407,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>486</x>
-     <y>211</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1346,8 +1423,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>407</x>
-     <y>188</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1362,8 +1439,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>499</x>
-     <y>179</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1378,8 +1455,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>470</x>
-     <y>188</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1394,8 +1471,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>426</x>
-     <y>204</y>
+     <x>254</x>
+     <y>149</y>
     </hint>
    </hints>
   </connection>
@@ -1410,8 +1487,8 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>132</y>
+     <x>254</x>
+     <y>144</y>
     </hint>
    </hints>
   </connection>
@@ -1426,8 +1503,40 @@ p, li { white-space: pre-wrap; }
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>132</y>
+     <x>254</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCopy</sender>
+   <signal>triggered()</signal>
+   <receiver>imPolygon</receiver>
+   <slot>onCopyPolygon()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionCopyIncomplete</sender>
+   <signal>triggered()</signal>
+   <receiver>imPolygon</receiver>
+   <slot>onCopyPolygon()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>254</x>
+     <y>144</y>
     </hint>
    </hints>
   </connection>

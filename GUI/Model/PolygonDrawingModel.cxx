@@ -631,6 +631,37 @@ bool PolygonVertexTest(const PolygonVertex &v1, const PolygonVertex &v2)
 }
 
 /**
+ * CopyPolygon()
+ *
+ * purpose:
+ * copies current polygon into the polygon m_Cache
+ *
+ *
+ * pre:
+ * buffer array has size width*height*4
+ * m_State == EDITING_STATE || DRAWING_STATE
+ * 
+ * post:
+ * m_State == same
+ */
+void
+PolygonDrawingModel
+::CopyPolygon()
+{
+  assert(m_State == EDITING_STATE || m_State == DRAWING_STATE );
+
+  // Copy polygon into polygon m_Cache
+  m_CachedPolygon = true;
+  m_Cache = m_Vertices;
+
+
+  // Set the state
+//  SetState(INACTIVE_STATE);
+//  InvokeEvent(StateMachineChangeEvent());
+
+}
+
+/**
  * AcceptPolygon()
  *
  * purpose:
@@ -697,6 +728,9 @@ PolygonDrawingModel
                       "and background labels are set correctly."));
     }
 
+    SaveTempToAccepted();
+
+#if 0 // In Burgess-lab mode, if we accept the polygon it doesn't get removed.
   // Copy polygon into polygon m_Cache
   m_CachedPolygon = true;
   m_Cache = m_Vertices;
@@ -708,6 +742,9 @@ PolygonDrawingModel
   // Set the state
   SetState(INACTIVE_STATE);
   InvokeEvent(StateMachineChangeEvent());
+
+  ClearPolygonSlice(m_curSlice);
+#endif
 }
 
 /**
@@ -897,8 +934,7 @@ bool PolygonDrawingModel::CheckState(PolygonDrawingUIState state)
  * m_State == EDITING_STATE
  */
 void
-PolygonDrawingModel
-::LoadPolygonSlice( int slice )
+PolygonDrawingModel::LoadPolygonSlice( int slice )
 {
   // find the vertices for this slice.
 
@@ -907,20 +943,44 @@ PolygonDrawingModel
 	if( aSlice->slice == slice )
 	{	
   		// Copy the cache into the vertices
-		  m_Vertices = aSlice->saved_vertices;
+		  m_Vertices = aSlice->temp_vertices;
 		
+		  int has_vertex = 0;
 		  // Select everything
 		  for(VertexIterator it = m_Vertices.begin(); it!=m_Vertices.end();++it)
+		  {
+			has_vertex = 1;
 		    it->selected = false;
+		  }
+
+		if( has_vertex && aSlice->theState == EDITING_STATE )
+		{
+		  m_SelectedVertices = false;
+		  SetState(EDITING_STATE);
 		
+		  // Compute the edit box
+		  ComputeEditBox();
+		}	
+		else if( aSlice->theState == DRAWING_STATE )
+		{
+		  SetState(DRAWING_STATE);
+		}	
+/*
+		if( has_vertex )
+		{	
 		  // Set the state
 		  m_SelectedVertices = false;
 		  SetState(EDITING_STATE);
 		
 		  // Compute the edit box
 		  ComputeEditBox();
-		  InvokeEvent(StateMachineChangeEvent());
-
+		}
+		else
+		{
+			SetState(INACTIVE_STATE);
+		}
+*/		  
+		InvokeEvent(StateMachineChangeEvent());
 
 		break;
 	}
@@ -929,10 +989,48 @@ PolygonDrawingModel
 }
 
 
+/**
+ * ClearPolygonSlice()
+ *
+ * AJS edit the pre/post below.
+ *
+ * purpose:
+ * clear the current polygon
+ *
+ */
+void
+PolygonDrawingModel
+::ClearPolygonSlice( int slice )
+{
+  // find the vertices for this slice.
+
+  SavedSlicePolygons *prev = NULL;
+  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
+  {
+	if( aSlice->slice == slice )
+	{	
+		if( prev )
+			prev->next = aSlice->next;
+		else
+			m_allPolygons = aSlice->next;
+
+		delete aSlice;
+		break;
+	}
+	prev = aSlice;
+  }   
+
+}
+
+
 // AJS save polygons
-void PolygonDrawingModel::WritePolygonsToBuffer( QTextStream &out )
+void PolygonDrawingModel::WritePolygonsToBuffer( TiXmlElement *root )
+//void PolygonDrawingModel::WritePolygonsToBuffer( QTextStream &out )
 {
 	SavePolygonSlice();
+
+	TiXmlElement *view = new TiXmlElement("view");
+	root->LinkEndChild(view);
 
 	// write polygons to an ascii buffer for saving.
 
@@ -941,23 +1039,52 @@ void PolygonDrawingModel::WritePolygonsToBuffer( QTextStream &out )
   	for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
 		npoly++;
 
-	out << npoly << endl;
+	view->SetAttribute("npoly", npoly );
+
+//	out << npoly << endl;
 
   	for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
 	{
-		out << aSlice->slice << endl;
+		for( int pass = 0; pass < 2; pass++ )
+		{
+			// pass 0 is accepted, pass 1 is temp.
 
-		int nv=0;
-		for(VertexIterator it = aSlice->saved_vertices.begin(); it!= aSlice->saved_vertices.end();++it)
-			nv++;
-		out << nv << endl;
-		for(VertexIterator it = aSlice->saved_vertices.begin(); it!= aSlice->saved_vertices.end();++it)
-			out << it->x << " " << it->y << endl;
+			TiXmlElement *slice = new TiXmlElement("slice");
+			
+			view->LinkEndChild(slice);
+	
+			slice->SetAttribute( "index", aSlice->slice );
+			slice->SetAttribute( "theState", aSlice->theState );
+			if( pass == 0 )
+				slice->SetAttribute( "type", "accepted" );
+			else
+				slice->SetAttribute( "type", "temp" );
+
+			VertexList *the_vertices;
+
+			if( pass == 0 )
+				the_vertices = &(aSlice->accepted_vertices);
+			else
+				the_vertices = &(aSlice->temp_vertices);
+				
+			int nv=0;
+			for(VertexIterator it = the_vertices->begin(); it!= the_vertices->end();++it)
+				nv++;
+			slice->SetAttribute( "nv", nv );
+			for(VertexIterator it = the_vertices->begin(); it!= the_vertices->end();++it)
+			{
+				TiXmlElement *vertex = new TiXmlElement("vertex");
+				slice->LinkEndChild(vertex);
+				vertex->SetAttribute( "x", it->x );
+				vertex->SetAttribute( "y", it->y );
+	
+			}
+		}
 	}	
 }
 
 // AJS open polygons
-void PolygonDrawingModel::ReadPolygonsFromBuffer( QTextStream &in)
+void PolygonDrawingModel::ReadPolygonsFromBuffer( TiXmlElement *view )
 {
 	// clear the current list if it's here.
 
@@ -971,44 +1098,141 @@ void PolygonDrawingModel::ReadPolygonsFromBuffer( QTextStream &in)
 
 	m_allPolygons = NULL;
 
-	// write polygons to an ascii buffer for saving.
-
+	
 	int npoly = 0;
 
-	in >> npoly;
-
-	for( int p = 0; p < npoly; p++ )
+	if( view->QueryIntAttribute("npoly", &npoly) != TIXML_SUCCESS)
 	{
-		// make a new slice for each one read:
-		SavedSlicePolygons *aSlice = new SavedSlicePolygons;
-
-		// add it to linked list.
-		aSlice->next = m_allPolygons;
-		m_allPolygons = aSlice;
-
-		in >> aSlice->slice;	
-
-		// read in file, same as write. nverts, read in verts..
-		int nv;
-
-		in >> nv;
-
-		for( int v = 0; v < nv; v++ )
-		{
-			double x,y;
-
-			in >> x;
-			in >> y;
-      			Vertex vNew( x, y, true, true);
-
-			aSlice->saved_vertices.insert(aSlice->saved_vertices.end(), vNew);
-		}	
+		printf("Failed to read npoly from saved polygons.\n");
+		return;
 	}
-    
+
+	TiXmlElement * poly = view->FirstChildElement("slice");
+
+	if( poly )
+	{
+		int p = 0;
+
+		while( poly )
+		{
+	
+	
+			int slice_index;
+			if( poly->QueryIntAttribute("index", &(slice_index)) != TIXML_SUCCESS)
+			{
+				printf("Failed to read slice index from polygon.\n");
+				return;
+			}
+			
+			SavedSlicePolygons *aSlice = NULL;
+
+			for( SavedSlicePolygons *t = m_allPolygons; t; t= t->next )
+			{
+				if( t->slice == slice_index )
+					aSlice = t;
+			}
+
+			if( ! aSlice )
+			{
+				aSlice = new SavedSlicePolygons;
+				aSlice->slice = slice_index;
+	
+				// add it to linked list.
+				aSlice->next = m_allPolygons;
+				m_allPolygons = aSlice;
+			}
+
+			int temp_state = 0;
+			int type = 0;
+			
+			if( poly->QueryIntAttribute("theState", &(temp_state)) != TIXML_SUCCESS)
+			{
+			}
+		
+			string theType; 	
+
+			VertexList *the_vertices = &(aSlice->accepted_vertices);
+
+			if( poly->QueryStringAttribute("type", &(theType)) != TIXML_SUCCESS)
+			{
+
+			}
+			else
+			{
+				if( theType == "temp" )
+					the_vertices = &(aSlice->temp_vertices);
+			}
+
+			aSlice->theState = (PolygonState)temp_state;
+	
+			// read in file, same as write. nverts, read in verts..
+			int nv;
+			if( poly->QueryIntAttribute("nv", &(nv)) != TIXML_SUCCESS)
+			{
+				printf("Failed to read number of vertices from polygon.\n");
+				return;
+			}
+	
+			TiXmlElement * vert = poly->FirstChildElement("vertex");
+
+	
+			if( vert )
+			{
+				//for( int v = 0; v < nv; v++ )
+				int v = 0;
+		
+				for( vert; vert; vert = vert->NextSiblingElement("vertex"), v++ )
+				{
+					double x=0,y=0;
+		
+					if( vert->QueryDoubleAttribute("x", &(x)) != TIXML_SUCCESS)
+					{
+						printf("Failed to read x coordinate from polygon vertex.\n");
+					}
+					if( vert->QueryDoubleAttribute("y", &(y)) != TIXML_SUCCESS)
+					{
+						printf("Failed to read y coordinate from polygon vertex.\n");
+					}
+		      			Vertex vNew( x, y, true, true);
+		
+					the_vertices->insert(the_vertices->end(), vNew);
+				}	
+			}
+
+			poly = poly->NextSiblingElement("slice");
+			p++;
+		}
+    	}
+
 	LoadPolygonSlice( m_curSlice );
 }
 
 // this saves the current polygon into a linked list of records, one for each slice.
+
+void PolygonDrawingModel::SaveTempToAccepted( void )
+{
+  SavedSlicePolygons *gotIt = NULL;
+  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
+  {
+	if( aSlice->slice == m_curSlice )
+	{	
+		gotIt = aSlice;
+		break;
+	}
+  }   
+	
+	if( !gotIt )
+	{
+		gotIt = new SavedSlicePolygons;
+		gotIt->theState =m_State;
+		gotIt->next = m_allPolygons;
+		gotIt->slice = m_curSlice;
+		m_allPolygons = gotIt;
+	}
+
+	
+   gotIt->accepted_vertices = m_Vertices; 
+}
 
 void
 PolygonDrawingModel
@@ -1030,11 +1254,12 @@ PolygonDrawingModel
 	if( !gotIt )
 	{
 		gotIt = new SavedSlicePolygons;
+		gotIt->theState =m_State;
 		gotIt->next = m_allPolygons;
 		gotIt->slice = m_curSlice;
 		m_allPolygons = gotIt;
 	}
 		
-	gotIt->saved_vertices = m_Vertices; 
+	gotIt->temp_vertices = m_Vertices; 
 }
 

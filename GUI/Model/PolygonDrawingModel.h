@@ -6,6 +6,9 @@
 #include <SNAPCommon.h>
 #include <IRISException.h>
 #include <QTextStream>
+
+#include "tinyxml.h"
+
 namespace itk {
   template <class TPixel, unsigned int VDimensions> class Image;
 }
@@ -60,6 +63,9 @@ public:
 
   /** Render polygon onto a target image */
   void AcceptPolygon(std::vector<IRISWarning> &warnings);
+  
+  /** caches current polygon */
+  void CopyPolygon(void);
 
   /** Copies cached polygon to current polygon */
   void PastePolygon(void);
@@ -141,9 +147,12 @@ public:
 
   void LoadPolygonSlice( int slice ); // AJS. load the polygons for this slice. saves the current polygon into its slice.
   void SavePolygonSlice( void ); // AJS. load the polygons for this slice. saves the current polygon into its slice.
+  void SaveTempToAccepted( void ); // AJS. load the polygons for this slice. saves the current polygon into its slice.
+  void ClearPolygonSlice( int slice ); // AJS. clear the saved data about the slice. for example, if we accept it.
 	
-  void WritePolygonsToBuffer( QTextStream &out );	
-  void ReadPolygonsFromBuffer( QTextStream &in );	
+  void WritePolygonsToBuffer( TiXmlElement *root );	
+  //void WritePolygonsToBuffer( QTextStream &out );	
+  void ReadPolygonsFromBuffer( TiXmlElement *root );	
 
 protected:
   PolygonDrawingModel();
@@ -154,8 +163,10 @@ protected:
 
   typedef struct SavedSlicePolygons
   {
-	VertexList saved_vertices; // maybe save other stuff later?
+	VertexList accepted_vertices; // maybe save other stuff later?
+	VertexList temp_vertices; // maybe save other stuff later?
   	SavedSlicePolygons *next;
+	PolygonState theState;
   	int slice;
   } SavedSlicePolygons;
 

@@ -1,0 +1,4 @@
+[submodule "Submodules/greedy"]
+	path = Submodules/greedy
+	url = https://github.com/pyushkevich/greedy.git
+	branch = remotes/origin/statvel-36-g3ed5a0d

@@ -64,6 +64,7 @@ SliceViewPanel::SliceViewPanel(QWidget *parent) :
   m_MenuPolyDrawing->addAction(ui->actionCompleteAndAccept);
   m_MenuPolyDrawing->addAction(ui->actionUndo);
   m_MenuPolyDrawing->addAction(ui->actionClearDrawing);
+  m_MenuPolyDrawing->addAction(ui->actionCopy);
 
   m_MenuPolyEditing = new QMenu(ui->imPolygon);
   m_MenuPolyEditing->setStyleSheet(menuStyle);
@@ -71,10 +72,13 @@ SliceViewPanel::SliceViewPanel(QWidget *parent) :
   m_MenuPolyEditing->addAction(ui->actionDeleteSelected);
   m_MenuPolyEditing->addAction(ui->actionSplitSelected);
   m_MenuPolyEditing->addAction(ui->actionClearPolygon);
+  m_MenuPolyEditing->addAction(ui->actionCopyIncomplete);
 
   // Connect the actions to the toolbar buttons (sucks to do this by hand)
   ui->btnAcceptPolygon->setDefaultAction(ui->actionAccept);
   ui->btnPastePolygon->setDefaultAction(ui->actionPaste);
+  ui->btnCopyPolygon->setDefaultAction(ui->actionCopy);
+  ui->btnCopyIncomplete->setDefaultAction(ui->actionCopyIncomplete);
   ui->btnClearDrawing->setDefaultAction(ui->actionClearDrawing);
   ui->btnCloseLoop->setDefaultAction(ui->actionComplete);
   ui->btnDeleteNodes->setDefaultAction(ui->actionDeleteSelected);
@@ -252,6 +256,7 @@ void SliceViewPanel::Initialize(GlobalUIModel *model, unsigned int index)
 
   activateOnAllFlags(ui->actionAccept, pm, UIF_EDITING, UIF_HAVEPOLYGON);
   activateOnAllFlags(ui->actionPaste, pm, UIF_INACTIVE, UIF_HAVECACHED);
+  activateOnAllFlags(ui->actionCopy, pm, UIF_EDITING, UIF_HAVEPOLYGON);
   activateOnAllFlags(ui->actionClearDrawing, pm, UIF_DRAWING, UIF_HAVEPOLYGON);
   activateOnAllFlags(ui->actionComplete, pm, UIF_DRAWING, UIF_HAVEPOLYGON);
   activateOnAllFlags(ui->actionCompleteAndAccept, pm, UIF_DRAWING, UIF_HAVEPOLYGON);
@@ -259,6 +264,7 @@ void SliceViewPanel::Initialize(GlobalUIModel *model, unsigned int index)
   activateOnAllFlags(ui->actionSplitSelected, pm, UIF_EDITING, UIF_HAVE_EDGE_SELECTION);
   activateOnAllFlags(ui->actionUndo, pm, UIF_DRAWING, UIF_HAVEPOLYGON);
   activateOnAllFlags(ui->actionClearPolygon, pm, UIF_EDITING, UIF_HAVEPOLYGON);
+  activateOnAllFlags(ui->actionCopyIncomplete, pm, UIF_DRAWING, UIF_HAVEPOLYGON);
 
   // AJS -- saved polygons: notify the polygon draw model of a slider update.
 //  makeCoupling(ui->inSlicePosition, pm->GetSliceIndexModel() );
