@@ -619,6 +619,18 @@ SET(UI_GENERIC_HEADERS
   GUI/Renderer/OrientationWidget/Reorient/PolyDataAlgorithm2ActorPipe.h
 )
 
+# Tiny XML files
+SET(TINYXML_CXX
+   tinyxml/tinystr.cxx		
+   tinyxml/tinyxml.cxx		
+   tinyxml/tinyxmlerror.cxx	
+   tinyxml/tinyxmlparser.cxx
+)
+
+SET(TINYXML_HEADERS
+   tinyxml/tinyxml.h
+)
+
 # These files contain the Qt-specific user interface source code
 SET(UI_QT_CXX
   GUI/Qt/Components/AnnotationToolPanel.cxx
@@ -1097,6 +1109,8 @@ ADD_LIBRARY(itksnaplogic ${LOGIC_CXX} ${LOGIC_HEADERS})
 # The UI model library
 ADD_LIBRARY(itksnapui_model ${UI_GENERIC_CXX} ${UI_GENERIC_HEADERS})
 
+ADD_LIBRARY(tinyxml ${TINYXML_CXX} ${TINYXML_HEADERS})
+
 # The user interface code library
 ADD_LIBRARY(itksnapui_qt
   ${UI_QT_CXX} ${UI_WRAPPED_MOC_HEADERS} ${UI_MOC_HEADERS} 
@@ -1108,9 +1122,10 @@ ADD_LIBRARY(itksnapui_qt
 TARGET_LINK_LIBRARIES(itksnaplogic ${SNAP_EXTERNAL_LIBS_LITE})
 TARGET_LINK_LIBRARIES(itksnapui_model itksnaplogic ${SNAP_EXTERNAL_LIBS})
 TARGET_LINK_LIBRARIES(itksnapui_qt ${SNAP_QT_LIBRARIES} ${SNAP_EXTERNAL_LIBS})
+TARGET_LINK_LIBRARIES(tinyxml ${SNAP_QT_LIBRARIES} ${SNAP_EXTERNAL_LIBS})
 
 # Designate the SNAP internal libraries
-SET(SNAP_INTERNAL_LIBS itksnapui_qt itksnapui_model itksnaplogic)
+SET(SNAP_INTERNAL_LIBS itksnapui_qt itksnapui_model itksnaplogic tinyxml)
 
 # Set up include directories for these targets
 FOREACH(target ${SNAP_INTERNAL_LIBS})
