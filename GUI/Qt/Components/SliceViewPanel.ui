@@ -247,6 +247,36 @@ font-size:11px;
              </spacer>
             </item>
             <item>
+             <widget class="QToolButton" name="btnRevertIncomplete">
+              <property name="minimumSize">
+               <size>
+                <width>64</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>-1</pointsize>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="text">
+               <string>revert</string>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextOnly</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QToolButton" name="btnCopyIncomplete">
               <property name="minimumSize">
                <size>
@@ -386,6 +416,36 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
              </spacer>
+            </item>
+            <item>
+             <widget class="QToolButton" name="btnRevert">
+              <property name="minimumSize">
+               <size>
+                <width>64</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>-1</pointsize>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="text">
+               <string>revert</string>
+              </property>
+              <property name="toolButtonStyle">
+               <enum>Qt::ToolButtonTextOnly</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QToolButton" name="btnCopyPolygon">
@@ -1297,6 +1357,42 @@ p, li { white-space: pre-wrap; }
     <string>Ctrl+C</string>
    </property>
   </action>
+  <action name="actionRevertIncomplete">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/popup_paste_16.png</normaloff>:/root/popup_paste_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>revert</string>
+   </property>
+   <property name="iconText">
+    <string>revert</string>
+   </property>
+   <property name="toolTip">
+    <string>Reverts to the accepted polygon.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionRevert">
+   <property name="icon">
+    <iconset resource="../Resources/SNAPResources.qrc">
+     <normaloff>:/root/popup_paste_16.png</normaloff>:/root/popup_paste_16.png</iconset>
+   </property>
+   <property name="text">
+    <string>revert</string>
+   </property>
+   <property name="iconText">
+    <string>revert</string>
+   </property>
+   <property name="toolTip">
+    <string>Reverts to the accepted polygon.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -1333,6 +1429,7 @@ p, li { white-space: pre-wrap; }
     <slot>onCancelDrawing()</slot>
     <slot>onCloseLoopAndAccept()</slot>
     <slot>onCopyPolygon()</slot>
+    <slot>onRevert()</slot>
    </slots>
   </customwidget>
   <customwidget>
@@ -1537,6 +1634,38 @@ p, li { white-space: pre-wrap; }
     <hint type="destinationlabel">
      <x>254</x>
      <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRevertIncomplete</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>imPolygon</receiver>
+   <slot>onRevert()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRevert</sender>
+   <signal>triggered()</signal>
+   <receiver>imPolygon</receiver>
+   <slot>onRevert()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>80</y>
     </hint>
    </hints>
   </connection>

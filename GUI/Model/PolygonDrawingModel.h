@@ -66,6 +66,9 @@ public:
   
   /** caches current polygon */
   void CopyPolygon(void);
+  
+  /** Reverts polygon to accepted */
+  void RevertPolygon(void);
 
   /** Copies cached polygon to current polygon */
   void PastePolygon(void);

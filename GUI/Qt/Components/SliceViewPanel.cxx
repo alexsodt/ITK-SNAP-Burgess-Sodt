@@ -57,6 +57,7 @@ SliceViewPanel::SliceViewPanel(QWidget *parent) :
   m_MenuPolyInactive = new QMenu(ui->imPolygon);
   m_MenuPolyInactive->setStyleSheet(menuStyle);
   m_MenuPolyInactive->addAction(ui->actionPaste);
+  m_MenuPolyInactive->addAction(ui->actionRevert);
 
   m_MenuPolyDrawing = new QMenu(ui->imPolygon);
   m_MenuPolyDrawing->setStyleSheet(menuStyle);
@@ -65,6 +66,7 @@ SliceViewPanel::SliceViewPanel(QWidget *parent) :
   m_MenuPolyDrawing->addAction(ui->actionUndo);
   m_MenuPolyDrawing->addAction(ui->actionClearDrawing);
   m_MenuPolyDrawing->addAction(ui->actionCopy);
+  m_MenuPolyDrawing->addAction(ui->actionRevert);
 
   m_MenuPolyEditing = new QMenu(ui->imPolygon);
   m_MenuPolyEditing->setStyleSheet(menuStyle);
@@ -73,6 +75,7 @@ SliceViewPanel::SliceViewPanel(QWidget *parent) :
   m_MenuPolyEditing->addAction(ui->actionSplitSelected);
   m_MenuPolyEditing->addAction(ui->actionClearPolygon);
   m_MenuPolyEditing->addAction(ui->actionCopyIncomplete);
+  m_MenuPolyEditing->addAction(ui->actionRevert);
 
   // Connect the actions to the toolbar buttons (sucks to do this by hand)
   ui->btnAcceptPolygon->setDefaultAction(ui->actionAccept);
@@ -85,6 +88,9 @@ SliceViewPanel::SliceViewPanel(QWidget *parent) :
   ui->btnDeletePolygon->setDefaultAction(ui->actionClearPolygon);
   ui->btnSplitNodes->setDefaultAction(ui->actionSplitSelected);
   ui->btnUndoLast->setDefaultAction(ui->actionUndo);
+  
+  ui->btnRevertIncomplete->setDefaultAction(ui->actionRevertIncomplete);
+  ui->btnRevert->setDefaultAction(ui->actionRevert);
 
   ui->btnAnnotationAcceptLine->setDefaultAction(ui->actionAnnotationAcceptLine);
   ui->btnAnnotationClearLine->setDefaultAction(ui->actionAnnotationClearLine);

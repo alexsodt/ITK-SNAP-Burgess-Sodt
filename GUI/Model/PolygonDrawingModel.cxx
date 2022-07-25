@@ -662,6 +662,56 @@ PolygonDrawingModel
 }
 
 /**
+ * RevertPolygon()
+ *
+ * purpose:
+ * copies current polygon into the polygon m_Cache
+ *
+ *
+ * pre:
+ * buffer array has size width*height*4
+ * m_State == EDITING_STATE || DRAWING_STATE
+ * 
+ * post:
+ * m_State == same
+ */
+void
+PolygonDrawingModel
+::RevertPolygon()
+{
+//  assert(m_State == EDITING_STATE || m_State == DRAWING_STATE );
+
+  // Copy polygon into polygon m_Cache
+
+  SavedSlicePolygons *gotIt = NULL;
+  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
+  {
+	if( aSlice->slice == m_curSlice )
+	{	
+		gotIt = aSlice;
+		break;
+	}
+  }   
+	
+	if( !gotIt )
+	{
+		gotIt = new SavedSlicePolygons;
+		gotIt->theState =m_State;
+		gotIt->next = m_allPolygons;
+		gotIt->slice = m_curSlice;
+		m_allPolygons = gotIt;
+	}
+
+	
+   m_Vertices = gotIt->accepted_vertices; 
+
+  // Set the state
+//  SetState(INACTIVE_STATE);
+//  InvokeEvent(StateMachineChangeEvent());
+
+}
+
+/**
  * AcceptPolygon()
  *
  * purpose:

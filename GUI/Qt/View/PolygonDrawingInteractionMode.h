@@ -41,6 +41,7 @@ signals:
 public slots:
 
   void onCopyPolygon(); // AJS, copying polygons not just accepting
+  void onRevert(); // AJS, revrt polygon to accepted
   void onPastePolygon();
   void onAcceptPolygon();
   void onSplitSelected();

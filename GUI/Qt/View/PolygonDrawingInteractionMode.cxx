@@ -134,6 +134,12 @@ void PolygonDrawingInteractionMode::onCopyPolygon()
   m_Model->CopyPolygon();
 }
 
+void PolygonDrawingInteractionMode::onRevert()
+{
+  m_Model->RevertPolygon();
+}
+
+
 
 void PolygonDrawingInteractionMode::onAcceptPolygon()
 {
