@@ -1290,26 +1290,50 @@ PolygonDrawingModel
 {
   // find the vertices for this slice.
 
-  SavedSlicePolygons *gotIt = NULL;
-  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
-  {
-	if( aSlice->slice == m_curSlice )
-	{	
-		gotIt = aSlice;
-		break;
-	}
-  }   
+  if( m_Vertices.size() > 0 ) {
 
-  
-	if( !gotIt )
-	{
-		gotIt = new SavedSlicePolygons;
-		gotIt->theState =m_State;
-		gotIt->next = m_allPolygons;
-		gotIt->slice = m_curSlice;
-		m_allPolygons = gotIt;
+	  SavedSlicePolygons *gotIt = NULL;
+	  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
+	  {
+		if( aSlice->slice == m_curSlice )
+		{	
+			gotIt = aSlice;
+			break;
+		}
+	  }   
+	
+	  
+		if( !gotIt )
+		{
+			gotIt = new SavedSlicePolygons;
+			gotIt->theState =m_State;
+			gotIt->next = m_allPolygons;
+			gotIt->slice = m_curSlice;
+			m_allPolygons = gotIt;
+		}
+			
+		gotIt->temp_vertices = m_Vertices; 
 	}
-		
-	gotIt->temp_vertices = m_Vertices; 
+	else
+	{
+		// explicitly remove any saved polygon.
+	  
+		SavedSlicePolygons *prev = NULL;
+
+		  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
+		  {
+			if( aSlice->slice == m_curSlice )
+			{	
+				if( prev )
+					prev->next = aSlice->next;
+				else
+					m_allPolygons = aSlice->next;
+
+				delete aSlice;
+				break;
+			}
+			prev = aSlice;
+		  }   
+	}
 }
 
