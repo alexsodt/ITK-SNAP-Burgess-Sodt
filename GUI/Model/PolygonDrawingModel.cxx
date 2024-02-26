@@ -7,6 +7,7 @@
 #include <set>
 #include <vnl/vnl_random.h>
 
+#include <QApplication> // needed to read shift modifiers.. move this check to the UI later?
 #include "GenericSliceModel.h"
 #include "itkImage.h"
 #include "itkPointSet.h"
@@ -987,11 +988,14 @@ void
 PolygonDrawingModel::LoadPolygonSlice( int slice )
 {
   // find the vertices for this slice.
+ 
+  int got_it = 0;
 
   for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
   {
 	if( aSlice->slice == slice )
 	{	
+                got_it = 1;
   		// Copy the cache into the vertices
 		  m_Vertices = aSlice->temp_vertices;
 		
@@ -1034,7 +1038,19 @@ PolygonDrawingModel::LoadPolygonSlice( int slice )
 
 		break;
 	}
-  }   
+  }
+//	printf("Got_it: %d control_keys: %d.\n", got_it, (int)(QApplication::keyboardModifiers() & Qt::ControlModifier));
+	
+	if( !got_it && !(QApplication::keyboardModifiers() & Qt::ControlModifier) )
+   	{
+  		m_Vertices.clear();
+ 		ComputeEditBox();
+  		if(m_State != INACTIVE_STATE) 
+		{
+			SetState(INACTIVE_STATE);
+			InvokeEvent(StateMachineChangeEvent());
+		}
+	}
 
 }
 
@@ -1290,7 +1306,8 @@ PolygonDrawingModel
 {
   // find the vertices for this slice.
 
-  if( m_Vertices.size() > 0 ) {
+  
+	if( m_Vertices.size() > 0 ) {
 
 	  SavedSlicePolygons *gotIt = NULL;
 	  for( SavedSlicePolygons *aSlice = m_allPolygons; aSlice; aSlice = aSlice->next )
